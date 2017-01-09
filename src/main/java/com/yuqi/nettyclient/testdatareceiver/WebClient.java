@@ -139,8 +139,8 @@ public class WebClient {
 
                 channel.writeAndFlush(new TextWebSocketFrame(JSON.toJSONString(baseMessage)));
                 channel.writeAndFlush(new TextWebSocketFrame(JSON.toJSONString(baseMessage1)));
-                NettyClient.atomicLong.getAndIncrement();
-                NettyClient.total.getAndIncrement();
+                NettyClient.atomicLong.getAndAdd(2);
+                NettyClient.total.getAndAdd(2);
             }
 
 

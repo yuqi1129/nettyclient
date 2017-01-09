@@ -2,12 +2,7 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="5b1ccae2-2d9b-47f5-ad64-1d31aab79ece" name="Default" comment="">
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/target/classes/com/yuqi/nettyclient/testdatareceiver/NettyClient$2.class" afterPath="$PROJECT_DIR$/target/classes/com/yuqi/nettyclient/testdatareceiver/NettyClient$2.class" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/target/classes/com/yuqi/nettyclient/testdatareceiver/NettyClient$3.class" afterPath="$PROJECT_DIR$/target/classes/com/yuqi/nettyclient/testdatareceiver/NettyClient$3.class" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/target/classes/com/yuqi/nettyclient/testdatareceiver/NettyClient.class" afterPath="$PROJECT_DIR$/target/classes/com/yuqi/nettyclient/testdatareceiver/NettyClient.class" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/target/classes/com/yuqi/nettyclient/testdatareceiver/WebClient.class" afterPath="$PROJECT_DIR$/target/classes/com/yuqi/nettyclient/testdatareceiver/WebClient.class" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/java/com/yuqi/nettyclient/testdatareceiver/NettyClient.java" afterPath="$PROJECT_DIR$/src/main/java/com/yuqi/nettyclient/testdatareceiver/NettyClient.java" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/java/com/yuqi/nettyclient/testdatareceiver/WebClient.java" afterPath="$PROJECT_DIR$/src/main/java/com/yuqi/nettyclient/testdatareceiver/WebClient.java" />
     </list>
     <ignored path="nettyclient.iws" />
@@ -36,11 +31,11 @@
   </component>
   <component name="FileEditorManager">
     <leaf SIDE_TABS_SIZE_LIMIT_KEY="300">
-      <file leaf-file-name="NettyClient.java" pinned="false" current-in-tab="true">
+      <file leaf-file-name="NettyClient.java" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/main/java/com/yuqi/nettyclient/testdatareceiver/NettyClient.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="302">
-              <caret line="72" column="33" selection-start-line="72" selection-start-column="33" selection-end-line="72" selection-end-column="33" />
+            <state relative-caret-position="379">
+              <caret line="106" column="42" selection-start-line="106" selection-start-column="42" selection-end-line="106" selection-end-column="42" />
               <folding>
                 <element signature="imports" expanded="true" />
                 <element signature="e#3562#4151#0" expanded="true" />
@@ -60,14 +55,24 @@
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="WebClient.java" pinned="false" current-in-tab="false">
+      <file leaf-file-name="WebClient.java" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/src/main/java/com/yuqi/nettyclient/testdatareceiver/WebClient.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="456">
-              <caret line="113" column="0" selection-start-line="113" selection-start-column="0" selection-end-line="113" selection-end-column="0" />
+            <state relative-caret-position="339">
+              <caret line="140" column="47" selection-start-line="140" selection-start-column="47" selection-end-line="140" selection-end-column="47" />
               <folding>
                 <element signature="imports" expanded="true" />
               </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="Channel.java" pinned="false" current-in-tab="false">
+        <entry file="jar://$MAVEN_REPOSITORY$/io/netty/netty-all/4.0.30.Final/netty-all-4.0.30.Final-sources.jar!/io/netty/channel/Channel.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="206">
+              <caret line="419" column="18" selection-start-line="419" selection-start-column="18" selection-end-line="419" selection-end-column="18" />
+              <folding />
             </state>
           </provider>
         </entry>
@@ -157,8 +162,8 @@
         <option value="$PROJECT_DIR$/src/main/java/com/yuqi/nettyclient/testdatareceiver/AbstractClientHandler.java" />
         <option value="$PROJECT_DIR$/src/main/java/com/yuqi/nettyclient/testdatareceiver/ClientHandler.java" />
         <option value="$PROJECT_DIR$/pom.xml" />
-        <option value="$PROJECT_DIR$/src/main/java/com/yuqi/nettyclient/testdatareceiver/WebClient.java" />
         <option value="$PROJECT_DIR$/src/main/java/com/yuqi/nettyclient/testdatareceiver/NettyClient.java" />
+        <option value="$PROJECT_DIR$/src/main/java/com/yuqi/nettyclient/testdatareceiver/WebClient.java" />
       </list>
     </option>
   </component>
@@ -936,12 +941,12 @@
       <workItem from="1483103393961" duration="97000" />
       <workItem from="1483335202971" duration="1370000" />
       <workItem from="1483529815266" duration="1649000" />
-      <workItem from="1483926997179" duration="3467000" />
+      <workItem from="1483926997179" duration="3847000" />
     </task>
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="110382000" />
+    <option name="totallyTimeSpent" value="110762000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="-1688" y="-8" width="1696" height="1066" extended-state="6" />
@@ -995,13 +1000,6 @@
     <option name="FILTER_TARGETS" value="false" />
   </component>
   <component name="editorHistoryManager">
-    <entry file="file://$PROJECT_DIR$/src/main/java/com/yuqi/nettyclient/common/TimeServerHandler4_2.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="864">
-          <caret line="42" column="0" selection-start-line="42" selection-start-column="0" selection-end-line="42" selection-end-column="0" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/src/main/java/com/yuqi/nettyclient/common/People.java">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="1008">
@@ -1364,24 +1362,32 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/com/yuqi/nettyclient/testdatareceiver/WebClient.java">
+    <entry file="jar://$MAVEN_REPOSITORY$/io/netty/netty-all/4.0.30.Final/netty-all-4.0.30.Final-sources.jar!/io/netty/channel/Channel.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="456">
-          <caret line="113" column="0" selection-start-line="113" selection-start-column="0" selection-end-line="113" selection-end-column="0" />
-          <folding>
-            <element signature="imports" expanded="true" />
-          </folding>
+        <state relative-caret-position="206">
+          <caret line="419" column="18" selection-start-line="419" selection-start-column="18" selection-end-line="419" selection-end-column="18" />
+          <folding />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/src/main/java/com/yuqi/nettyclient/testdatareceiver/NettyClient.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="302">
-          <caret line="72" column="33" selection-start-line="72" selection-start-column="33" selection-end-line="72" selection-end-column="33" />
+        <state relative-caret-position="379">
+          <caret line="106" column="42" selection-start-line="106" selection-start-column="42" selection-end-line="106" selection-end-column="42" />
           <folding>
             <element signature="imports" expanded="true" />
             <element signature="e#3562#4151#0" expanded="true" />
             <element signature="e#4150#4151#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/com/yuqi/nettyclient/testdatareceiver/WebClient.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="339">
+          <caret line="140" column="47" selection-start-line="140" selection-start-column="47" selection-end-line="140" selection-end-column="47" />
+          <folding>
+            <element signature="imports" expanded="true" />
           </folding>
         </state>
       </provider>
