@@ -69,7 +69,7 @@ public class NettyClient {
         //final String host = "db-40.photo.163.org" ;
         //final int port = 9228 ;               //db-40的转发
 
-        final String host = "127.0.0.1" ;
+        final String host = "classb-ds1.server.163.org" ;
         final int port = 9228 ;  
 
         //final String host = "app-117.photo.163.org";

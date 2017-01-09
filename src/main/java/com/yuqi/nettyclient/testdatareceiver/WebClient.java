@@ -132,13 +132,13 @@ public class WebClient {
 
 
                 //hanler out flow
-                TagOutFlowStatisticsMessage tagMq = new TagOutFlowStatisticsMessage(tagname[tagIndex],random.nextInt(5) + 1, (random.nextInt(5) + 1) * 100,5);
+                TagOutFlowStatisticsMessage tagMq = new TagOutFlowStatisticsMessage(tagname[tagIndex],random.nextInt(5) + 1, (random.nextInt(5) + 1) * 100,3);
                 BaseMessage baseTagMq = new BaseMessage(10, handler[tailfileHostname], 3, new Date().getTime(), JSON.toJSONString(tagMq));
 
-                TagOutFlowStatisticsMessage tagHbase = new TagOutFlowStatisticsMessage(tagname[tagIndex],random.nextInt(5) + 1, (random.nextInt(5) + 1) * 100,4);
+                TagOutFlowStatisticsMessage tagHbase = new TagOutFlowStatisticsMessage(tagname[tagIndex],random.nextInt(5) + 1, (random.nextInt(5) + 1) * 100,2);
                 BaseMessage baseTagHbase = new BaseMessage(10, handler[tailfileHostname], 3, new Date().getTime(), JSON.toJSONString(tagHbase));
 
-                TagOutFlowStatisticsMessage tagHDFS = new TagOutFlowStatisticsMessage(tagname[tagIndex],random.nextInt(5) + 1, (random.nextInt(5) + 1) * 100,3);
+                TagOutFlowStatisticsMessage tagHDFS = new TagOutFlowStatisticsMessage(tagname[tagIndex],random.nextInt(5) + 1, (random.nextInt(5) + 1) * 100,1);
                 BaseMessage baseTagHDFS = new BaseMessage(10, handler[tailfileHostname], 3, new Date().getTime(), JSON.toJSONString(tagHDFS));
 
                 // node 维度
@@ -175,15 +175,15 @@ public class WebClient {
                 channel.writeAndFlush(new TextWebSocketFrame(JSON.toJSONString(baseMessage1))); // tag dataroute in
                 channel.writeAndFlush(new TextWebSocketFrame(JSON.toJSONString(baseMessage2))); // tag handle in
 
-                channel.writeAndFlush(new TextWebSocketFrame(JSON.toJSONString(tagMq)));  // tag mq
-                channel.writeAndFlush(new TextWebSocketFrame(JSON.toJSONString(tagHbase))); // tag hbase
-                channel.writeAndFlush(new TextWebSocketFrame(JSON.toJSONString(tagHDFS))); // tag hdfs
+                channel.writeAndFlush(new TextWebSocketFrame(JSON.toJSONString(baseTagMq)));  // tag mq
+                channel.writeAndFlush(new TextWebSocketFrame(JSON.toJSONString(baseTagHbase))); // tag hbase
+                channel.writeAndFlush(new TextWebSocketFrame(JSON.toJSONString(baseTagHDFS))); // tag hdfs
 
-                channel.writeAndFlush(new TextWebSocketFrame(JSON.toJSONString(routein))); // node route in
-                channel.writeAndFlush(new TextWebSocketFrame(JSON.toJSONString(routeout))); // node route out
+                channel.writeAndFlush(new TextWebSocketFrame(JSON.toJSONString(baseRouteIn))); // node route in
+                channel.writeAndFlush(new TextWebSocketFrame(JSON.toJSONString(baseRodeOut))); // node route out
                 channel.writeAndFlush(new TextWebSocketFrame(JSON.toJSONString(baseHandleIn))); // node handle in
 
-                channel.writeAndFlush(new TextWebSocketFrame(JSON.toJSONString(nodeOutFlowStatisticsMessage))); // node handler flow
+                channel.writeAndFlush(new TextWebSocketFrame(JSON.toJSONString(handlerout))); // node handler flow
 
                 NettyClient.atomicLong.getAndAdd(12);
                 NettyClient.total.getAndAdd(12);
