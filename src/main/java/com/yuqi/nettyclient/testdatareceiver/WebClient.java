@@ -185,10 +185,10 @@ public class WebClient {
 
                 channel.writeAndFlush(new TextWebSocketFrame(JSON.toJSONString(nodeOutFlowStatisticsMessage))); // node handler flow
 
-                NettyClient.atomicLong.getAndAdd(2);
-                NettyClient.total.getAndAdd(2);
+                NettyClient.atomicLong.getAndAdd(12);
+                NettyClient.total.getAndAdd(12);
             }
-            
+
 
             try {
                 Thread.currentThread().sleep(1000);
