@@ -99,28 +99,56 @@ public class WebClient {
     public void sendMessage(Channel channel){
         ByteBuf byteBuf = null;
         Random random = new Random();
+
+        String [] tailFile = {"nrpt1.photo.163.org","nrpt0.photo.163.org"};
+        String [] route = {"hzayq-sc2.server.163.org","nrpt1.photo.163.org"};
+        String [] handler = {"hzayq-sc3.server.163.org","app72v1.photo.163.org"};
+
+        String [] tagname = {"qatest_lanyx0108_10","qatest_lanyx0108_9","qatest_lanyx0108_8","qatest_lanyx0108_7"};
+
+
         for(;;){
             //for(int i = 0; i< 1000 ;i++){
 
-            for (int i = 0 ;i < 1; i++) {
-                TagOutStatisticsMessage message = new TagOutStatisticsMessage("me", "xxx", "10000", random.nextInt(5) + 1, (random.nextInt(5) + 1) * 100);
-                BaseMessage baseMessage = new BaseMessage(8, "xxx_test", random.nextInt(3) + 1, new Date().getTime(), JSON.toJSONString(message));
+            for (int i = 0 ;i < 10; i++) {
+
+                int tagIndex = random.nextInt(4);
+                int tailfileHostname = random.nextInt(2);
+
+                TagOutStatisticsMessage message = new TagOutStatisticsMessage(tagname[tagIndex], "xxx", "10000", random.nextInt(5) + 1, (random.nextInt(5) + 1) * 100);
+
+
+                BaseMessage baseMessage = new BaseMessage(8, tailFile[tailfileHostname], 1, new Date().getTime(), JSON.toJSONString(message));
                 //byte [] req = JSON.toJSONString(baseMessage).getBytes();
                 //byteBuf = Unpooled.buffer(req.length);
                 //byteBuf.writeBytes(req);
                 //context.writeAndFlush(byteBuf);
+
+                TagOutStatisticsMessage message1 = new TagOutStatisticsMessage(tagname[tagIndex], "xxx", "10000", random.nextInt(5) + 1, (random.nextInt(5) + 1) * 100);
+
+
+                BaseMessage baseMessage1 = new BaseMessage(8, route[tailfileHostname], 2, new Date().getTime(), JSON.toJSONString(message1));
+
+
+
                 try {
-                    //Thread.currentThread().sleep(0.1);
+                    Thread.currentThread().sleep(1);
                 } catch (Exception e) {
                     e.printStackTrace();
                 }
 
                 channel.writeAndFlush(new TextWebSocketFrame(JSON.toJSONString(baseMessage)));
+                channel.writeAndFlush(new TextWebSocketFrame(JSON.toJSONString(baseMessage1)));
                 NettyClient.atomicLong.getAndIncrement();
                 NettyClient.total.getAndIncrement();
             }
+
+
+
+
+
             try {
-                Thread.currentThread().sleep(400);
+                Thread.currentThread().sleep(10000);
             } catch (Exception e) {
                 e.printStackTrace();
             }

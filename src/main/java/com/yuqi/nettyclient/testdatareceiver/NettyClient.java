@@ -66,15 +66,18 @@ public class NettyClient {
 
     public static void main(String [] args){
 
-        //final String host = "127.0.0.1" ;
-        //final int port = 30000 ;               //db-40的转发
+        //final String host = "db-40.photo.163.org" ;
+        //final int port = 9228 ;               //db-40的转发
 
-        //final String host = "127.0.0.1" ;
-        //final int port = 20001 ;
+        final String host = "127.0.0.1" ;
+        final int port = 9228 ;  
 
-        final String host = "hz.datastream.netease.com" ;
-        final int port = 9228 ;
-        int threadNumber = 800;
+        //final String host = "app-117.photo.163.org";
+        //final int port = 9228;
+
+        //final String host = "hz.datastream.netease.com" ;
+        //final int port = 9228 ;
+        int threadNumber = 1000;
 
         ScheduledExecutorService executorService = Executors.newScheduledThreadPool(Runtime.getRuntime().availableProcessors() * 2);
         //NettyClient.connect(host,9228);
