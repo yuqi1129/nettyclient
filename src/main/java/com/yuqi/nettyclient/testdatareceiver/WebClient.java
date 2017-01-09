@@ -115,40 +115,83 @@ public class WebClient {
                 int tagIndex = random.nextInt(4);
                 int tailfileHostname = random.nextInt(2);
 
+                //Tag weidu
+
+                //Tailfile out
                 TagOutStatisticsMessage message = new TagOutStatisticsMessage(tagname[tagIndex], "xxx", "10000", random.nextInt(5) + 1, (random.nextInt(5) + 1) * 100);
-
-
                 BaseMessage baseMessage = new BaseMessage(8, tailFile[tailfileHostname], 1, new Date().getTime(), JSON.toJSONString(message));
-                //byte [] req = JSON.toJSONString(baseMessage).getBytes();
-                //byteBuf = Unpooled.buffer(req.length);
-                //byteBuf.writeBytes(req);
-                //context.writeAndFlush(byteBuf);
 
-                TagOutStatisticsMessage message1 = new TagOutStatisticsMessage(tagname[tagIndex], "xxx", "10000", random.nextInt(5) + 1, (random.nextInt(5) + 1) * 100);
+                // dataroute in
+                TagInStatisticsMessage message1 = new TagInStatisticsMessage(tagname[tagIndex],random.nextInt(5) + 1, (random.nextInt(5) + 1) * 100);
+                BaseMessage baseMessage1 = new BaseMessage(7, route[tailfileHostname], 2, new Date().getTime(), JSON.toJSONString(message1));
+
+                // data handler in
+                TagInStatisticsMessage message2 = new TagInStatisticsMessage(tagname[tagIndex],random.nextInt(5) + 1, (random.nextInt(5) + 1) * 100);
+                BaseMessage baseMessage2 = new BaseMessage(7, handler[tailfileHostname], 3, new Date().getTime(), JSON.toJSONString(message2));
 
 
-                BaseMessage baseMessage1 = new BaseMessage(8, route[tailfileHostname], 2, new Date().getTime(), JSON.toJSONString(message1));
+
+                //hanler out flow
+                TagOutFlowStatisticsMessage tagMq = new TagOutFlowStatisticsMessage(tagname[tagIndex],random.nextInt(5) + 1, (random.nextInt(5) + 1) * 100,5);
+                BaseMessage baseTagMq = new BaseMessage(10, handler[tailfileHostname], 3, new Date().getTime(), JSON.toJSONString(tagMq));
+
+                TagOutFlowStatisticsMessage tagHbase = new TagOutFlowStatisticsMessage(tagname[tagIndex],random.nextInt(5) + 1, (random.nextInt(5) + 1) * 100,4);
+                BaseMessage baseTagHbase = new BaseMessage(10, handler[tailfileHostname], 3, new Date().getTime(), JSON.toJSONString(tagHbase));
+
+                TagOutFlowStatisticsMessage tagHDFS = new TagOutFlowStatisticsMessage(tagname[tagIndex],random.nextInt(5) + 1, (random.nextInt(5) + 1) * 100,3);
+                BaseMessage baseTagHDFS = new BaseMessage(10, handler[tailfileHostname], 3, new Date().getTime(), JSON.toJSONString(tagHDFS));
+
+                // node 维度
+
+                //route in
+                NodeInStatisticsMessage routein = new NodeInStatisticsMessage(random.nextInt(5) + 1, (random.nextInt(5) + 1) * 100);
+                BaseMessage baseRouteIn = new BaseMessage(5,route[tailfileHostname],2,new Date().getTime(),JSON.toJSONString(routein));
+                //rout out
+                NodeInStatisticsMessage routeout = new NodeInStatisticsMessage(random.nextInt(5) + 1, (random.nextInt(5) + 1) * 100);
+                BaseMessage baseRodeOut = new BaseMessage(6,route[tailfileHostname],2,new Date().getTime(),JSON.toJSONString(routeout));
 
 
+                // hadnler in
+                NodeInStatisticsMessage hanlerin = new NodeInStatisticsMessage(random.nextInt(5) + 1, (random.nextInt(5) + 1) * 100);
+                BaseMessage baseHandleIn = new BaseMessage(5,handler[tailfileHostname],3,new Date().getTime(),JSON.toJSONString(hanlerin));
+
+                //handler out flow
+                NodeOutFlowStatisticsMessage nodeOutFlowStatisticsMessage = new NodeOutFlowStatisticsMessage();
+                nodeOutFlowStatisticsMessage.setHbaseFlowCount(random.nextInt(5) + 1);
+                nodeOutFlowStatisticsMessage.setMqFlowCount(random.nextInt(5) + 1);
+                nodeOutFlowStatisticsMessage.setHdfsFlowCount(random.nextInt(5) + 1);
+                nodeOutFlowStatisticsMessage.setHbaseFlowSize((random.nextInt(5) + 1) * 100);
+                nodeOutFlowStatisticsMessage.setHdfsFlowSize((random.nextInt(5) + 1) * 100);
+                nodeOutFlowStatisticsMessage.setMqFlowSize((random.nextInt(5) + 1) * 100);
+                BaseMessage handlerout = new BaseMessage(9,handler[tailfileHostname],3,new Date().getTime(),JSON.toJSONString(nodeOutFlowStatisticsMessage));
 
                 try {
-                    Thread.currentThread().sleep(1);
+                    Thread.currentThread().sleep(10);
                 } catch (Exception e) {
                     e.printStackTrace();
                 }
 
-                channel.writeAndFlush(new TextWebSocketFrame(JSON.toJSONString(baseMessage)));
-                channel.writeAndFlush(new TextWebSocketFrame(JSON.toJSONString(baseMessage1)));
+                channel.writeAndFlush(new TextWebSocketFrame(JSON.toJSONString(baseMessage))); // tailfile out
+                channel.writeAndFlush(new TextWebSocketFrame(JSON.toJSONString(baseMessage1))); // tag dataroute in
+                channel.writeAndFlush(new TextWebSocketFrame(JSON.toJSONString(baseMessage2))); // tag handle in
+
+                channel.writeAndFlush(new TextWebSocketFrame(JSON.toJSONString(tagMq)));  // tag mq
+                channel.writeAndFlush(new TextWebSocketFrame(JSON.toJSONString(tagHbase))); // tag hbase
+                channel.writeAndFlush(new TextWebSocketFrame(JSON.toJSONString(tagHDFS))); // tag hdfs
+
+                channel.writeAndFlush(new TextWebSocketFrame(JSON.toJSONString(routein))); // node route in
+                channel.writeAndFlush(new TextWebSocketFrame(JSON.toJSONString(routeout))); // node route out
+                channel.writeAndFlush(new TextWebSocketFrame(JSON.toJSONString(baseHandleIn))); // node handle in
+
+                channel.writeAndFlush(new TextWebSocketFrame(JSON.toJSONString(nodeOutFlowStatisticsMessage))); // node handler flow
+
                 NettyClient.atomicLong.getAndAdd(2);
                 NettyClient.total.getAndAdd(2);
             }
-
-
-
-
+            
 
             try {
-                Thread.currentThread().sleep(10000);
+                Thread.currentThread().sleep(1000);
             } catch (Exception e) {
                 e.printStackTrace();
             }
